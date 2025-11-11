@@ -18,45 +18,36 @@ int main() {
     int arr[100][100];
     cout << "\nВведите элементы матрицы (" << n << " строк по " << m << " чисел):\n";
     for (int i = 0; i < n; ++i)
-        for (int j = 0; j < m; ++j)
+        for (int j = 0; j < m; ++j) {
+			cout << "arr[" << i << "][" << j << "] = ";
             cin >> arr[i][j];
-
-    cout << "\nИсходная матрица:\n";
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j)
-            cout << arr[i][j] << "\t";
-        cout << "\n";
-    }
+        }
+            
 
     int maxVal = arr[0][0], minVal = arr[0][0];
-    int maxRow = 0, maxCol = 0, minRow = 0, minCol = 0;
+    int maxN = 0, maxM = 0, minN = 0, minM = 0;
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
             if (arr[i][j] > maxVal) {
                 maxVal = arr[i][j];
-                maxRow = i; maxCol = j;
+                maxN = i; maxM = j;
             }
             if (arr[i][j] < minVal) {
                 minVal = arr[i][j];
-                minRow = i; minCol = j;
+                minN = i; minM = j;
             }
         }
     }
 
-    cout << "\nНайденный минимальный элемент: " << minVal
-         << " (позиция: " << minRow + 1 << ", " << minCol + 1 << ")\n";
-    cout << "Найденный максимальный элемент: " << maxVal
-         << " (позиция: " << maxRow + 1 << ", " << maxCol + 1 << ")\n";
 
     if (minVal == maxVal) {
-        cout << "\nМинимальный и максимальный элементы равны (значение = "
-             << minVal << "). Обмен не требуется — матрица не изменится.\n";
-    } else {
-        // Выполняем обмен значений в найденных позициях
-        int temp = arr[minRow][minCol];
-        arr[minRow][minCol] = arr[maxRow][maxCol];
-        arr[maxRow][maxCol] = temp;
+        cout << "\nМинимальный и максимальный элементы равны";
+    }
+    else {
+        int temp = arr[minN][minM];
+        arr[minN][minM] = arr[maxN][maxM];
+        arr[maxN][maxM] = temp;
 
         cout << "\nМатрица после обмена минимального и максимального элементов:\n";
         for (int i = 0; i < n; ++i) {
@@ -66,6 +57,5 @@ int main() {
         }
     }
 
-    cout << "\nПрограмма завершена успешно.\n";
     return 0;
 }
