@@ -19,31 +19,23 @@ int main() {
     cout << "\nВведите элементы массива (" << n << " строк по " << m << " чисел):\n";
     for (int i = 0; i < n; ++i)
         for (int j = 0; j < m; ++j)
+			cout << "arr[" << i << "][" << j << "] = ",
             cin >> arr[i][j];
-
-    cout << "\nИсходный массив:\n";
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j)
-            cout << arr[i][j] << "\t";
-        cout << "\n";
-    }
-
-    cout << "\nЭлементы, индексы которых являются степенями двойки (индексация с 0):\n";
 
     int index = 0;
     int count = 0;
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
-            // Простая проверка степени двойки
             int temp = index;
             bool isPower = false;
 
-            if (temp == 0 || temp == 1) { // 0 и 1 считаем степенями двойки
+            if (temp == 1) { 
                 isPower = true;
-            } else {
+            }
+            else {
                 while (temp > 1) {
-                    if (temp % 2 != 0) { // если деление на 2 оставляет остаток → не степень двойки
+                    if (temp % 2 != 0) { 
                         isPower = false;
                         break;
                     }
@@ -54,7 +46,7 @@ int main() {
 
             if (isPower) {
                 cout << "Элемент с индексом " << index << " (" << i << ", " << j
-                     << ") = " << arr[i][j] << endl;
+                    << ") = " << arr[i][j] << endl;
                 count++;
             }
 
@@ -63,8 +55,7 @@ int main() {
     }
 
     if (count == 0)
-        cout << "Нет элементов с индексами, являющимися степенями двойки.\n";
+        cout << "\nНет элементов с индексами, являющимися степенями двойки.\n";
 
-    cout << "\nПрограмма завершена.\n";
     return 0;
 }
