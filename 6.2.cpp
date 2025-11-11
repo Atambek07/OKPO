@@ -15,27 +15,19 @@ int main() {
         return 0;
     }
 
-    int arr[100][100]; // ограничение до 100x100
+    int arr[100][100]; 
     cout << "\nВведите элементы матрицы (" << n << " строк по " << m << " чисел):\n";
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
+			cout << "arr[" << i + 1 << "][" << j + 1 << "]: ";
             cin >> arr[i][j];
         }
     }
 
-    cout << "\nВведённая матрица:\n";
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cout << arr[i][j] << "\t";
-        }
-        cout << endl;
-    }
+    long long product = 1;
+    bool found = false;
 
-    long long product = 1; 
-    bool found = false;    
-
-    // Поиск положительных чётных элементов
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (arr[i][j] > 0 && arr[i][j] % 2 == 0) {
@@ -51,8 +43,6 @@ int main() {
         cout << "Произведение всех положительных чётных элементов: " << product << endl;
     else
         cout << "В массиве нет положительных чётных элементов." << endl;
-
-    cout << "\nПрограмма завершена успешно." << endl;
 
     return 0;
 }
