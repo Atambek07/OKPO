@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip> // для вывода с фиксированным количеством знаков
 using namespace std;
 
 int main() {
@@ -21,40 +20,32 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
+			cout << "arr[" << i << "][" << j << "] = ";
             cin >> arr[i][j];
         }
     }
 
-    cout << "\nВведённая матрица:\n";
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cout << arr[i][j] << "\t";
-        }
-        cout << endl;
-    }
-
-    int countNeg = 0;      // количество отрицательных чисел
-    int sumNeg = 0;        // сумма отрицательных чисел
+    int count = 0;      
+    int sum = 0;        
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (arr[i][j] < 0) {
-                sumNeg += arr[i][j];
-                countNeg++;
+                sum += arr[i][j];
+                count++;
             }
         }
     }
 
     cout << "\n";
 
-    if (countNeg > 0) {
-        double average = static_cast<double>(sumNeg) / countNeg;
-        cout << "Среднее арифметическое отрицательных элементов: "
-             << fixed << setprecision(2) << average << endl;
-    } else {
+    if (count > 0) {
+        double avg = double(sum) / count;
+        cout << "Среднее арифметическое отрицательных элементов: " << avg << endl;
+    }
+    else {
         cout << "В массиве нет отрицательных элементов." << endl;
     }
 
-    cout << "\nПрограмма завершена успешно." << endl;
     return 0;
 }
