@@ -13,36 +13,36 @@ int main() {
         return 0;
     }
 
-    int grades[100][4]; 
-    int totalSum = 0;   
-    int failCount = 0;  
+    int a[100][4];
+    int sum = 0;
+    int count = 0;
 
-    // Ввод оценок студентов
     for (int i = 0; i < N; ++i) {
         cout << "\nВведите 4 оценки студента " << i + 1 << " (от 1 до 5): ";
-        bool hasFail = false; 
+		double gpa = 0.0;
 
         for (int j = 0; j < 4; ++j) {
-            cin >> grades[i][j];
-            while (grades[i][j] < 1 || grades[i][j] > 5) {
+            cin >> a[i][j];
+            while (a[i][j] < 1 || a[i][j] > 5) {
                 cout << "Ошибка! Введите оценку от 1 до 5: ";
-                cin >> grades[i][j];
+                cin >> a[i][j];
             }
 
-            totalSum += grades[i][j];       
-            if (grades[i][j] < 3) hasFail = true; 
+            sum += a[i][j];
+            gpa += a[i][j];
         }
-
-        if (hasFail) failCount++; 
+		gpa /= 4.0;
+        if (gpa < 3.5) {
+            count++;
+        }
     }
 
-    
-    double average = (double)totalSum / (N * 4);
 
-    
-    cout << "\nКоличество неуспевающих студентов: " << failCount << endl;
-    cout << "Средний балл группы: " << average << endl;
+    double avg = (double)sum / (N * 4);
 
-    cout << "\nПрограмма завершена.\n";
+
+    cout << "\nКоличество неуспевающих студентов: " << count << endl;
+    cout << "Средний балл группы: " << avg << endl;
+
     return 0;
 }
