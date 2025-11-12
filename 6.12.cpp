@@ -19,20 +19,14 @@ int main() {
     cout << "\nВведите элементы массива (" << n << " строк по " << m << " чисел):\n";
     for (int i = 0; i < n; ++i)
         for (int j = 0; j < m; ++j)
+			cout << "arr[" << i << "][" << j << "] = ",
             cin >> arr[i][j];
 
-    cout << "\nИсходная матрица:\n";
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j)
-            cout << arr[i][j] << "\t";
-        cout << "\n";
-    }
-
     int countEven = 0;
-    cout << "\nЧётные элементы над главной диагональю:\n";
 
+    cout << "\n";
     for (int i = 0; i < n; ++i) {
-        for (int j = i + 1; j < m; ++j) { // j > i → над диагональю
+        for (int j = i + 1; j < m; ++j) { 
             if (arr[i][j] % 2 == 0) {
                 cout << "arr[" << i << "][" << j << "] = " << arr[i][j] << endl;
                 countEven++;
@@ -42,6 +36,5 @@ int main() {
 
     cout << "\nКоличество чётных элементов над главной диагональю: " << countEven << endl;
 
-    cout << "\nПрограмма завершена.\n";
     return 0;
 }
