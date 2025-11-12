@@ -15,47 +15,40 @@ int main() {
         return 0;
     }
 
-    int arr[100][100];
+    int a[100][100];
     cout << "\nВведите элементы массива (" << n << " строк по " << m << " чисел):\n";
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < m; ++j)
-            cin >> arr[i][j];
-
-    // Вывод исходной матрицы
-    cout << "\nИсходная матрица:\n";
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j)
-            cout << arr[i][j] << "\t";
-        cout << "\n";
+    for (int i = 0; i < n; ++i) { 
+        for (int j = 0; j < m; ++j) { 
+            cout << "a[" << i << "][" << j << "]: ";
+            cin >> a[i][j];
+        }
     }
 
-    int diagLength = (n < m) ? n : m;
-    int minDiagonal = arr[0][0];
+    int diag = (n < m) ? n : m;
+    int minDiag = a[0][0];
     int minIndex = 0;
 
-    for (int i = 1; i < diagLength; ++i) {
-        if (arr[i][i] < minDiagonal) {
-            minDiagonal = arr[i][i];
+    for (int i = 1; i < diag; ++i) {
+        if (a[i][i] < minDiag) {
+            minDiag = a[i][i];
             minIndex = i;
         }
     }
 
-    bool isMinInColumn = true;
+    bool isMinM = true;
     for (int k = 0; k < n; ++k) {
-        if (arr[k][minIndex] < arr[minIndex][minIndex]) {
-            isMinInColumn = false;
+        if (a[k][minIndex] < a[minIndex][minIndex]) {
+            isMinM = false;
             break;
         }
     }
 
-    if (isMinInColumn) {
-        cout << "\nЭлемент, минимальный в своём столбце и минимальный на главной диагонали: "
-             << arr[minIndex][minIndex] 
-             << " (позиция: " << minIndex << ", " << minIndex << ")\n";
-    } else {
+    if (isMinM) {
+        cout << "\nЭлемент, минимальный в своём столбце и минимальный на главной диагонали: " << a[minIndex][minIndex];
+    }
+    else {
         cout << "\nТакого элемента нет.\n";
     }
 
-    cout << "\nПрограмма завершена.\n";
     return 0;
 }
